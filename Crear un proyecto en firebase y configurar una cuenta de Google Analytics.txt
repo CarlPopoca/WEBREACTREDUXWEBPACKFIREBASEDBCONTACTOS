@@ -1,0 +1,17 @@
+
+Realice los siguientes pasos para la creación de un Proyecto:
+
+	* Ingresa a Firebase https://firebase.google.com/ y dar clic en ir a la consola
+	* Dar clic en Agregar proyecto y escribe un nombre para tu proyecto.
+	* Deja habilitado, o habilita la opción de Google Analytics, seleccione por default la cuenta de google Analytics.
+
+****************************************************************************************
+En caso se desee configurar una cuenta de Google Analytics realice los siguientes pasos:
+
+	* Escriba el nombre de la cuenta
+	* Elija la región mas cercana, en mi caso es México
+	* Habilite lo que necesite, según convenga y por último pulse el botón de Crear Proyecto.
+
+	Nota: Debe dejar habilitada la opción Acepto las condiciones de Google para que pueda crear el proyecto.
+
+****************************************************************************************

@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* You can add global styles to this file, and also import other style files */
+.red-input{
+  border-width: 1;
+  margin-bottom: 20;
+  border-color: #dc3545;
+  
+}
+.green-input{
+  border-color:#28a745;
+}
+.green-icon {
+  color:#28a745;
+}
+.red-icon {
+  color: #dc3545;
+}
+#toast-container > div{
+  opacity:1;
+}
+table tr:hover {
+  cursor:pointer;
+}

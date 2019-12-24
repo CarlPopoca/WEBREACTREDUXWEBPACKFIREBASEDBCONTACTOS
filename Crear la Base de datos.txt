@@ -1,0 +1,41 @@
+
+Las bases de datos se añaden a proyectos de Firebase, si no cuenta con un proyecto agreguelo.
+
+Realice los siguientes pasos para crear la Base de datos Realtime Database:
+
+	* Ingresa a Firebase https://firebase.google.com/ y dar clic en ir a la consola.
+	* Dar clic en el proyecto que trabajara y luego de clic en la opción Database del Menú Desarrolla.
+	* Dar clic en crear base de datos de Realtime Database.
+	* Seleccione la opción comenzar en modo de prueba, para ambientes productivos se recomienda la opción 
+		Comenzar en modo bloqueado y de clic en habilitar.
+	* Dar clic en la opción Reglas y colocar los atributos read y write a true, esto permitira que pueda consultar y guardar datos,
+		 el código quedara de la siguiente manera:
+
+		{
+ 		 /* Visit https://firebase.google.com/docs/database/security to learn more about security rules. */
+		  "rules": {
+		    ".read": true,
+		    ".write": true
+		  }
+		}
+
+Realice los siguientes pasos crear la Base de datos Cloud Firestore:
+
+	* Dar clic en la opción Cloud Firestore.
+ 	* Seleccione modo de prueba, para ambientes productivos se recomienda la opción 
+		Comenzar en modo bloqueado y de clic en siguiente.
+	* Elija la región más cercana de su Base de datos, para este ejemplo seleccionaremos la opción nam5(us-central) 
+		y pulse el botón Listo
+	* Dar clic en la opción Reglas y colocar los atributos read y write a true, esto permitira que pueda consultar y guardar datos,
+		 el código quedara de la siguiente manera:
+	
+		rules_version = '2';
+		service cloud.firestore {
+	  	   match /databases/{database}/documents {
+	    	      match /{document=**} {
+	      	         allow read, write: if true;
+	   	      }
+	  	  }
+		}
+
+
