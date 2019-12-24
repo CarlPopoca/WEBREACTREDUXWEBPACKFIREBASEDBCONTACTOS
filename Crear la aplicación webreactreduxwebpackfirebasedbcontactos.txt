@@ -232,8 +232,3 @@ Copia el archivo index.html que se genero en la carpeta public y pegalo dentro d
 Ejecute los siguientes comando para instalar los componentes de Firebase que nos permitiran hacer peticiones y transacciones a la BD de firebase:
 
 	npm install firebase react-redux-firebase redux-firestore@latest --save 
-
-Ubica los archivos estáticos ejemplo HTML, CSS y JS en el directorio de implementación de tu app (el directorio predeterminado es “public”, pero cambialo por src) y 
-luego ejecuta este comando desde el directorio raíz de la app:
-
-	firebase deploy --only hosting:contactosreactredux
