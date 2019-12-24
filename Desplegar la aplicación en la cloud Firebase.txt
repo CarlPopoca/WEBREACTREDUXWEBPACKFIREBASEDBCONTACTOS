@@ -1,7 +1,7 @@
 La carpeta Public que se genera el automático al ejecutar agregar firebase al proyecto es el directorio predeterminado de los componentes 
 de todo el proyecto (css, js, html etc).
 
-Modifique de el archivo firebase.json de la siguiente manera para ambiente de desarrollo:
+Modifique el archivo firebase.json de la siguiente manera para ambiente de desarrollo:
 
 	{
 	  "hosting": {
