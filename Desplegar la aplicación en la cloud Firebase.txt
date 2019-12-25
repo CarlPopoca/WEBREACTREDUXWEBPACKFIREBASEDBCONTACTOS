@@ -22,7 +22,7 @@ Modifique el archivo firebase.json de la siguiente manera para ambiente de desar
 	}
 
 
-Modifique de el archivo firebase.json de la siguiente manera para el despliegue en producción:
+Modifique el archivo firebase.json de la siguiente manera para el despliegue en producción:
 
 	{
 	  "hosting": {
@@ -50,3 +50,7 @@ Abra un cmd, luego vaya a la raiz del proyecto y ejecute el siguiente comando:
 	firebase deploy --only hosting:contactosreactredux
 
 	Nota: Al finalizar le mostrara el mensaje de Deploy complete, la url del contenido del proyecto y la url pública de la aplicación.
+
+La url pública de esta aplicación es:
+	
+	https://contactosreactredux.firebaseapp.com/
