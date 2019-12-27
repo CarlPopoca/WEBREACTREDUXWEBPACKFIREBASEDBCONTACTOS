@@ -1,0 +1,55 @@
+La carpeta Public que se genera el automático al ejecutar agregar firebase al proyecto es el directorio predeterminado de los componentes 
+de todo el proyecto (css, js, html etc).
+
+Modifique el archivo firebase.json de la siguiente manera para ambiente de desarrollo:
+
+	{
+	  "hosting": {
+	    "site": "contactosreactredux",
+	    "public": "src",
+	    "ignore": [
+	      "firebase.json",
+	      "**/.*",
+	      "**/node_modules/**"
+	    ],
+	    "rewrites": [
+	      {
+	        "source": "**",
+	        "destination": "/index.html"
+	      }
+	    ]
+	  }
+	}
+
+Modifique el archivo firebase.json de la siguiente manera para el despliegue en producción:
+
+	{
+	  "hosting": {
+	    "site": "contactosreactredux",
+	    "public": "dist",
+	    "ignore": [
+	      "firebase.json",
+	      "**/.*",
+	      "**/node_modules/**"
+	    ],
+	    "rewrites": [
+	      {
+	        "source": "**",
+	        "destination": "/index.html"
+	      }
+	    ]
+	  }
+	}
+
+
+Desplegar la aplicación en la Cloud de Direbase.
+
+Abra un cmd, luego vaya a la raiz del proyecto y ejecute el siguiente comando:
+	
+	firebase deploy --only hosting:contactosreactredux
+
+	Nota: Al finalizar le mostrara el mensaje de Deploy complete, la url del contenido del proyecto y la url pública de la aplicación.
+
+La url pública de esta aplicación es:
+	
+	https://contactosreactredux.firebaseapp.com/
