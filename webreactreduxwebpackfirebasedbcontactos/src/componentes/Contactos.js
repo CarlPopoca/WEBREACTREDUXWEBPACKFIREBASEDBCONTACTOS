@@ -303,7 +303,7 @@ validarContacto(contacto) {
     const {loading} = this.state; 
     const {auth,error} = this.props;
  
-    if (!auth.uid && !error)
+    if (!auth.uid && !this.state.loggedIn)
     return <Redirect  to="/" />
     //Se setea a la variable local contactosReg el objeto contactos que se lleno al ejecutarse el método
     //componentWillMount en automatico y se retorna las filas del Table más una columna con los botones de
