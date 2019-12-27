@@ -21,7 +21,6 @@ Modifique el archivo firebase.json de la siguiente manera para ambiente de desar
 	  }
 	}
 
-
 Modifique el archivo firebase.json de la siguiente manera para el despliegue en producción:
 
 	{
