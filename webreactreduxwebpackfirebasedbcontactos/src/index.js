@@ -29,7 +29,7 @@ const initialState = {};
 const store = createStore(rootReducer, 
   initialState,
   compose(
-    applyMiddleware(...middlewares),
+    applyMiddleware(...middlewares)
   ));
 
 const rrfProps = {
@@ -41,7 +41,7 @@ const rrfProps = {
 
 ReactDOM.render(
 <Provider store = {store}>
-    <ReactReduxFirebaseProvider {...rrfProps}>
+    <ReactReduxFirebaseProvider {...rrfProps} >
         <App />
     </ReactReduxFirebaseProvider>
 </Provider>

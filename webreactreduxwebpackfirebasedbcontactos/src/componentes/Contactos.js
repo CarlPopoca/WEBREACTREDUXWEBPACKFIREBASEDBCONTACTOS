@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {connect} from 'react-redux';
 import {getContactos, saveContactos, updateContactos, deleteContactos} from '../actions/actionsContactos';
 import AlertaError from './AlertaError';
-import {ACTION_SAVE, ACTION_UPDATE} from '../utils/constantes'
+import {ACTION_SAVE, ACTION_UPDATE} from '../utils/constantes';
 /*import Navegacion from './Navegacion';*/
 //Una Clase que extiende del component de React se comvierte en una etiqueta html
 class Contactos extends Component  {
@@ -16,6 +16,7 @@ class Contactos extends Component  {
     super(props);
     const token = localStorage.getItem("token");
     let loggedIn = true;
+    
     if (token==null){
       loggedIn = false;
     }
@@ -50,17 +51,16 @@ class Contactos extends Component  {
   }
 
   componentWillReceiveProps(nextProps){
+    
     //En este método y dentro del render ya se pueden obtener los valores props devueltos por el mapeo del reducer
     const {error} = nextProps;
-     if (error == null)
-     {
-      this.successfulActions()
-     }else
-     {
+    
+    if (error == null)
+      this.successfulActions();
+    else
       this.setState({
         alert_message: error
       });
-     }
   }
 
   successfulActions()
@@ -260,7 +260,7 @@ validarContacto(contacto) {
                     onClick={() => {
                       this.props.deleteContactos(id);
                       const {error} = this.props;
-                      if (error!= null)
+                      if (!error)
                       {
                         onClose();
                       }
@@ -300,15 +300,11 @@ validarContacto(contacto) {
   }
   
   render(){
-    const {loading} = this.state;
-
-    const {auth, error} = this.props;
-  
-    if (!auth.uid && error==null) {
-      //Otra forma de hacer redirect
-      // this.props.history.push("/")
-      return <Redirect  to="/" />
-    }
+    const {loading} = this.state; 
+    const {auth,error} = this.props;
+ 
+    if (!auth.uid && !error)
+    return <Redirect  to="/" />
     //Se setea a la variable local contactosReg el objeto contactos que se lleno al ejecutarse el método
     //componentWillMount en automatico y se retorna las filas del Table más una columna con los botones de
     //Editar y eliminar
@@ -351,9 +347,7 @@ validarContacto(contacto) {
       
       <div className="App container">
         <h2>Aplicación de Contactos</h2>
-        {error?<AlertaError mensaje={error} />:null}
         <Button  className="my-3" color="primary" onClick={this.toggleNuevoContactoModal.bind(this)}>Agregar</Button>
-        
         <Modal isOpen={this.state.nuevoContactoModal}  toggle={this.toggleNuevoContactoModal.bind(this)}>
           <ModalHeader toggle={this.toggleNuevoContactoModal.bind(this)}>Agregar un Contacto</ModalHeader>
           <ModalBody>
@@ -513,9 +507,9 @@ const mapStateToProps = state =>
   //auth: Este nombre que va delante del reducer firebase es el objeto que proporcionara el id del usuario autenticado,
   //  si tiene un valor permitira al usuario acceder
   return {
+    auth: state.firebase.auth,
     contactos: state.contactos.contactos,
-    error: state.contactos.error,
-    auth: state.firebase.auth
+    error: state.contactos.error   
   }
 }
 

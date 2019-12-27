@@ -1,0 +1,41 @@
+
+
+Crear el branch Github Pages.
+
+Ingrese con su cuenta a GitHub y realice lo siguiente.
+
+	* En la pestaña de Branch dar clic en el botón de Branch, luego introduzca en el cuadro de texto gh-pages y pulse enter.
+
+Configuración del archivo package.json.
+
+Dentro de la sección scripts agregue los siguiente:
+
+	"predeploy": "npx webpack -d",
+	"deploy": "gh-pages -d dist",
+	test": "react-scripts test",
+	"eject": "react-scripts eject"
+
+Ingrese con su cuenta a Github, luego vaya a la pestaña Settings del proyecto y copie la url del site de la sección GitHub Pages 
+y agreguela al principio del archivo package.json:
+
+	"homepage": "https://carlpopoca.github.io/WEBREACTREDUXWEBPACKFIREBASEDBCONTACTOS/"
+
+Instalación de librerías.
+
+En un cmd vaya a la raiz de la aplicación y ejecute los siguientes comandos para instalar las librerías de despliegue de GitHub Pages:
+
+	npm install gh-pages --save-dev	
+	npm install -g gh-deploy
+
+Vaya al archivo js donde se hace el ruteo de las paginas y ocupe HashRouter, ejemplo:
+
+	import {HashRouter as Routers, Switch, Route} from 'react-router-dom';
+
+Despligue de la aplicación en GitHub.
+
+En un cmd vaya a la raiz de la aplicación y ejecute el siguiente comando para realizar el despliegue:
+
+	npm run deploy
+
+	Nota: Cuando termine se mostrara el mensaje Published
+

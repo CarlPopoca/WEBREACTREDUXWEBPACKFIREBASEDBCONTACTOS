@@ -21,6 +21,7 @@ componentDidMount(){
 
 componentWillReceiveProps(nextProps){
 
+ 
  if(this.props.location.pathname !== nextProps.location.pathname){
    this.changeNavItem(nextProps.location.pathname);
   }
@@ -54,7 +55,7 @@ changeNavItem(currentRoute){
        var letLogin = (
          <Fragment>
              <NavItem>
-               <NavLink className="nav-link" to="/iniciarSesion">Iniciar sesión</NavLink>
+               <NavLink className="nav-link" to= "/iniciarSesion">Iniciar sesión</NavLink>
              </NavItem>
              <NavItem>
                <NavLink className="nav-link" to="/registrarUsuario">Registrar Usuario</NavLink>
@@ -73,7 +74,7 @@ changeNavItem(currentRoute){
                 <NavLink className="nav-link" to="/">Aplicación de Contactos</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink className="nav-link" to="/contactos">Contactos</NavLink>
+                <NavLink className="nav-link" to= "/contactos">Contactos</NavLink>
               </NavItem>
                 {letLogout}
                 {letLogin}

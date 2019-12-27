@@ -118,12 +118,14 @@ Agregue lo siguiente al archivo index.html:
            <script src="dist/main.js" charset="utf-8"></script>
         </body>
       </html>
-	
-Abra el archivo package.json y agregue dentro de la sección scripts lo siguiente:
+
+Configuración del archivo package.json.
+
+Dentro de la sección scripts agregue los siguiente:
 
 	"start": "webpack-dev-server --mode development",
-	"build": "webpack --mode production"
-
+	"build": "webpack --mode production",
+	
 Integrar los cambios que se vayan haciendo al archivo main.js:
 
 	npx webpack -d

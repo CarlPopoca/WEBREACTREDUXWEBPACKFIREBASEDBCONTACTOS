@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import {BrowserRouter as Routers, Switch, Route, withRouter, Link } from 'react-router-dom';
+//Cambiar a HashRouter cuando se necesite hacer el despligue a GitHub Pages, de lo contrario
+//ocupar BrowserRouter
+import {HashRouter as Routers, Switch, Route} from 'react-router-dom';
 import IniciarSesion from './componentes/seguridad/IniciarSesion';
 import CerrarSesion from './componentes/seguridad/CerrarSesion';
 import RegistrarUsuario from './componentes/seguridad/RegistrarUsuario';
@@ -39,7 +41,7 @@ class App extends Component {
               <img src={logo} className="App-logo" alt="logo" />
           </header>
           <body>
-            <Routers>
+            <Routers >
               <Switch>
                 <Fragment>
                   <NavMenu location={this.props.location}></NavMenu>

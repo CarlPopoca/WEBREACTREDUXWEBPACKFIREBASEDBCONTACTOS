@@ -1,10 +1,10 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import AlertaError from '../../componentes/AlertaError';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {saveUsuarios, iniciarSesion} from '../../actions/actionsUsuarios';
 import {connect} from 'react-redux';
-import {INIT_SESION, ADD_USERS} from "../../utils/constantes";
+import { ADD_USERS} from "../../utils/constantes";
 
 class RegistrarUsuario extends Component{
   constructor(props){
@@ -54,12 +54,13 @@ class RegistrarUsuario extends Component{
               lastName: ''
             }
           });
-       }else
+          this.props.history.push("/");
+       } else
        {
          if (this.state.iniciarSesion == ADD_USERS)
           this.iniciarSesion();
        }
-     }else
+     } else
      {
       this.setState({
         alert_message: error
@@ -158,17 +159,11 @@ validacionBoton(e){
 
 render(){
   const {loading} = this.state;
-  const {auth, error} = this.props;
-  
-  if (auth.uid && error==null) {
-    //Otra forma de hacer redirect
-    // this.props.history.push("/")
-    return <Redirect  to="/" />
-  }
+  //Otra forma de hacer redirect
+  //return <Redirect  to="/" />
   return (
 
     <div id="cover-caption">
-        
         {this.state.alert_message!=""?<AlertaError mensaje={this.state.alert_message} />:null}
         <div id="container" className="container">
             <div className="row">

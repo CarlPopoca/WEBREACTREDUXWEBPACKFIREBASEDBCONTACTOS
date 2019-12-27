@@ -13,20 +13,30 @@ class CerrarSesion extends Component{
       loggedIn = false;
     }
     this.state = {
-      loggedIn
+      loggedIn,
+      alert_message:''
     }
     this.Salir();
   }
 
   componentWillReceiveProps(nextProps){
-    const {error} = nextProps;
+    const {error, auth} = nextProps;
+    //Otra forma de hacer redirect
+    // this.props.history.push("/")
+    if (!auth.uid) 
+      this.props.history.push("/");
+    
     if (error==null)
     {
       localStorage.removeItem("token");
       this.setState({
         loggedIn: false
       });
-    }
+    } else
+    this.setState({
+      alert_message: error
+    });
+   
   }
 
   Salir()
@@ -34,18 +44,11 @@ class CerrarSesion extends Component{
     this.props.cerrarSesion();
   }
   render(){
-    const {auth, error} = this.props;
-
-      // this.props.history.push("/")
-     if (auth.uid == null && error==null) {
-      return <Redirect  to="/" />
-     }
-
-    //  window.location.href='/';
+    const {error} = this.props;
     return (
       <div id="cover-caption">
         <hr/>
-          {error?<AlertaError mensaje={error} />:null}
+          {this.state.alert_message?<AlertaError mensaje={this.state.alert_message} />:null}
       </div>
     )
   }

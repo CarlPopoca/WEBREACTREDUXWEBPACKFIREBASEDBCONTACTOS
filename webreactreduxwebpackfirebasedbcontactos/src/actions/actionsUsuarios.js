@@ -74,7 +74,6 @@ export const cerrarSesion = () => {
     .auth()
     .signOut()
     .then(data => {
-      //alert('hubo un error logout');
       dispatch(logoutUsuario(data))
       }
     )

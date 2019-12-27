@@ -44,8 +44,9 @@ class IniciarSesion extends Component{
                password: ''
              }
            });
+           this.props.history.push("/");
        }
-     }else
+     } else
      {
       this.setState({
         alert_message: error
@@ -78,9 +79,7 @@ class IniciarSesion extends Component{
   {
   
     let valControles = this.validacionControles();
-    
     if (valControles){
-      
       this.setState({
         loading:true
       });
@@ -103,14 +102,6 @@ validacionBoton(e){
 
   render(){
     const {loading} = this.state;
-    const {auth, error} = this.props;
-    
-    if (auth.uid){
-      //Otra forma de hacer redirect
-      // this.props.history.push("/")
-      return <Redirect  to="/" />
-      //  window.location.href='/';
-    }
     return (
 
       <div id="cover-caption">
