@@ -9,7 +9,7 @@ class Home extends Component  {
 
           <div className="App container">
 
-            <h3>Aplicación de React con Redux y Apis de seguridad y contactos en ASP NET Core 2.2 </h3>
+            <h3>Aplicación de contactos con React 16.2.0, se conecta a una Base de datos de Firebase Cloud Firestore y ocupa el SDK de Firebase para la autenticación por email y password</h3>
           </div>
         </div>
       );
