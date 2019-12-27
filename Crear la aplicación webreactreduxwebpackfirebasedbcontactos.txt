@@ -228,8 +228,7 @@ Agrega el nombre de tu sitio al archivo de configuración firebase.json. Despué
 	  }
 	}
 
-
-Copia el archivo index.html que se genero en la carpeta public y pegalo dentro de la carpeta src.
+Elimine el archivo index.html que se genero y agregue en la carpeta public el que genero.
 
 Ejecute los siguientes comando para instalar los componentes de Firebase que nos permitiran hacer peticiones y transacciones a la BD de firebase:
 
