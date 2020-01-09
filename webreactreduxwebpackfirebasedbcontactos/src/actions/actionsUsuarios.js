@@ -78,7 +78,6 @@ export const cerrarSesion = () => {
       }
     )
     .catch(error => {
-      alert('hubo un error');
       dispatch(errorCerrarSesion(MESSAGE_ERROR_LOGOUT));
     });
   }
