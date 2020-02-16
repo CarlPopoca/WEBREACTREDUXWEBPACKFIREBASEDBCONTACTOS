@@ -18,20 +18,23 @@ const middlewares = [
 
 const rrfConfig = {
     userProfile: 'users',
-    useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+    useFirestoreForProfile: true 
   }
 
   //Inicializa la instancía de Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.firestore();
 
+//Se inicializa el estado
 const initialState = {};
+//Se crea el store añadiendose el contenedor de reducers
 const store = createStore(rootReducer, 
   initialState,
   compose(
     applyMiddleware(...middlewares)
   ));
 
+//Configuración de firestore con redux, perfil de autenticación y store
 const rrfProps = {
     firebase,
     config: rrfConfig,

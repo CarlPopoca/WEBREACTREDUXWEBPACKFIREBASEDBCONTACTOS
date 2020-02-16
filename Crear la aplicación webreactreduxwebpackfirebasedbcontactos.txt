@@ -9,7 +9,7 @@ Crear el package.json con lo basico, vaya a la carpeta del proyecto webreactredu
 
 Comandos para la configuración de la aplicación
 
-	yarn add react react-dom react-router react-router-dom bootstrap reactstrap react-bootstrap redux react-redux redux-devtools-extension redux-thunk react-fetch react-confirm-alert react-md-spinner @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
+	yarn add react react-dom react-router react-router-dom bootstrap reactstrap react-select react-bootstrap redux react-redux redux-devtools-extension redux-thunk react-fetch react-confirm-alert react-md-spinner @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/free-brands-svg-icons
 	
 	npm install path @babel/core @babel/preset-react babel-loader --save
 
@@ -233,3 +233,10 @@ Elimine el archivo index.html que se genero y agregue en la carpeta public el qu
 Ejecute los siguientes comando para instalar los componentes de Firebase que nos permitiran hacer peticiones y transacciones a la BD de firebase:
 
 	npm install firebase react-redux-firebase redux-firestore@latest --save 
+
+
+Ejecutar la aplicación.
+
+En un cmd vaya a la raiz de la aplicación y ejecute el siguiente comando:
+
+	yarn start

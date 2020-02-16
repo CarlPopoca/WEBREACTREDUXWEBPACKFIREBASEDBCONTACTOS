@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component}  from 'react';
 import {Label, FormGroup, Input, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button} from 'reactstrap';
 import { Redirect} from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
@@ -6,12 +6,13 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {connect} from 'react-redux';
 import {getContactos, saveContactos, updateContactos, deleteContactos} from '../actions/actionsContactos';
+import {getSexo} from '../actions/actionsSexo';
 import AlertaError from './AlertaError';
 import {ACTION_SAVE, ACTION_UPDATE} from '../utils/constantes';
 /*import Navegacion from './Navegacion';*/
 //Una Clase que extiende del component de React se comvierte en una etiqueta html
 class Contactos extends Component  {
-
+  
   constructor(props){
     super(props);
     const token = localStorage.getItem("token");
@@ -53,14 +54,26 @@ class Contactos extends Component  {
   componentWillReceiveProps(nextProps){
     
     //En este método y dentro del render ya se pueden obtener los valores props devueltos por el mapeo del reducer
-    const {error} = nextProps;
-    
+    const {error, errorSexo} = nextProps;
+    let errorMessage = '';
+
     if (error == null)
       this.successfulActions();
     else
-      this.setState({
-        alert_message: error
-      });
+    {
+      errorMessage = error;
+    }
+    if (errorSexo != null)
+    {
+      if (errorMessage.length > 0)
+        errorMessage.concat(', ' + errorSexo);
+      else
+        errorMessage = errorSexo;
+    }
+
+    this.setState({
+      alert_message: errorMessage
+    });
   }
 
   successfulActions()
@@ -132,6 +145,7 @@ class Contactos extends Component  {
  //Método que refrescara el Table
   refrescarContactos(){
     this.props.getContactos();
+    this.props.getSexo();
   }
   
 
@@ -150,7 +164,7 @@ class Contactos extends Component  {
       datosNuevoContacto: {
         nombre: '',
         celular: '',
-        sexo: ''
+        sexo: 'SEL'
       }
     });
   }
@@ -187,7 +201,7 @@ validarContacto(contacto) {
     celular = 'true';
     valAlert=true;
   }
-  if (contacto.sexo ==='')
+  if (contacto.sexo ==='SEL')
   {
     sexo = 'true';
     valAlert=true;
@@ -321,6 +335,10 @@ validarContacto(contacto) {
         </tr>
       )
     });
+
+    let sexoReg = this.props.sexo.map((data)=>{
+      return(<option value={data.id}>{data.nombre}</option>)
+    });
     // El botón Agregar cambia a true la variable nuevoContactoModal por medio del metodo toggleNuevoContactoModal
 
     //Modal para modificar datos se abre en automatico cuando su atributo isOpen cambia a verdadero por medio de la variable nuevoContactoModal
@@ -367,7 +385,9 @@ validarContacto(contacto) {
                   }else {
                     this.setState({isNullNombre: 'false'});
                   }
-                }}/>
+                }}>
+               
+                </Input>
             </FormGroup>
             <FormGroup>
               <Label for="Celular">Celular</Label>
@@ -387,18 +407,24 @@ validarContacto(contacto) {
             </FormGroup>
             <FormGroup>
               <Label for="Sexo">Sexo</Label>
-              <Input  id="Sexo" style={this.validacionInput(this.state.isNullSexo)} value={this.state.datosNuevoContacto.sexo} onChange={(e)=>{
+              <Input type="select"  id="Sexo"
+                defaultValue ="false"
+               style={this.validacionInput(this.state.isNullSexo)}
+                value={this.state.datosNuevoContacto.sexo} onChange={(e)=>{
                 let {datosNuevoContacto} = this.state;
                 datosNuevoContacto.sexo = e.target.value;
                 this.setState({datosNuevoContacto});
-                }} required="true" maxlength="3" minlength="3" onBlur={(e)=>{
-                  if (e.target.value == '')
+                }} required="true" onBlur={(e)=>{
+                  if (e.target.value == 'SEL')
                   {
                     this.setState({isNullSexo: 'true'});
                   }else {
                     this.setState({isNullSexo: 'false'});
                   }
-                }}/>
+                }}>
+                  {sexoReg}
+                </Input>
+            
             </FormGroup>
           </ModalBody>
          <ModalFooter>
@@ -450,18 +476,21 @@ validarContacto(contacto) {
           </FormGroup>
           <FormGroup>
             <Label for="Sexo">Sexo</Label>
-            <Input id="Sexo" style={this.validacionInput(this.state.isNullSexo)}  value={this.state.datosEditarContacto.sexo} onChange={(e)=>{
+            
+            <Input id="Sexo" type="select" style={this.validacionInput(this.state.isNullSexo)}  value={this.state.datosEditarContacto.sexo} onChange={(e)=>{
               let {datosEditarContacto} = this.state;
               datosEditarContacto.sexo = e.target.value;
               this.setState({datosEditarContacto});
-              }} required="true"  maxlength="3" minlength="3" onBlur={(e)=>{
-                if (e.target.value == '')
+              }} required="true" onBlur={(e)=>{
+                if (e.target.value == 'SEL')
                 {
                   this.setState({isNullSexo: 'true'});
                 }else {
                   this.setState({isNullSexo: 'false'});
                 }
-              }}/>
+              }}>
+                 {sexoReg}
+              </Input>
           </FormGroup>
         </ModalBody>
         <ModalFooter>
@@ -509,9 +538,11 @@ const mapStateToProps = state =>
   return {
     auth: state.firebase.auth,
     contactos: state.contactos.contactos,
-    error: state.contactos.error   
+    error: state.contactos.error,  
+    sexo: state.sexo.sexo, 
+    errorSexo:state.sexo.error
   }
 }
 
-export default connect(mapStateToProps, {getContactos, saveContactos, updateContactos, deleteContactos})(Contactos);
+export default connect(mapStateToProps, {getContactos, saveContactos, updateContactos, deleteContactos, getSexo})(Contactos);
 	

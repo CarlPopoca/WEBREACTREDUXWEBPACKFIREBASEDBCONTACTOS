@@ -48,6 +48,7 @@ export const getContactos = () =>
         .collection("contactos")
         .get()
         .then(snapshot => {
+            console.log(snapshot);
           dispatch(setContactos(snapshot));
         })
         .catch(error => {
