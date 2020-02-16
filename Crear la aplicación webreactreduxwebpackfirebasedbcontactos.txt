@@ -130,7 +130,7 @@ Integrar los cambios que se vayan haciendo al archivo main.js:
 
 	npx webpack -d
 
-Compilar e integrar los cambios que se hayan hecho ejecute el siguiente comando:
+Compilar e integrar los cambios que se hayan hecho, ejecute el siguiente comando:
 
 	npx webpack-dev-server -d
 
